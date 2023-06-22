@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MontyHall } from '../model/monty-hall.model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class MontyHallService {
     return this.http.post(this.rootURL, this.formData);
   }
 
-  loadResult() {
-    return this.http.get(this.rootURL);
+  loadResult(): Observable<MontyHall[]> {
+    return this.http.get<MontyHall[]>(this.rootURL);
   }
 }
