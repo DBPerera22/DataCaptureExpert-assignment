@@ -1,5 +1,5 @@
 export class MontyHall {
-  initialSelection?: number;
+  InitialDoorSelection?: number;
   changedDoor?: boolean;
   finalDoor?: number;
   isWin?: boolean;

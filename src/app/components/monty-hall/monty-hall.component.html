@@ -13,12 +13,12 @@
         <div class="card-body">
           <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
             <div class="form-group">
-              <label for="initialSelection">Initial Selection</label>
+              <label for="InitialDoorSelection">Initial Selection</label>
               <select
-                name="initialSelection"
-                id="initialSelection"
+                name="InitialDoorSelection"
+                id="InitialDoorSelection"
                 class="form-control"
-                [(ngModel)]="monty_hall.formData.initialSelection"
+                [(ngModel)]="monty_hall.formData.InitialDoorSelection"
                 required
               >
                 <option value="1">Door 1</option>
