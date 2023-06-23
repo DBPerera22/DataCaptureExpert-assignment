@@ -1,7 +1,6 @@
 export class MontyHall {
-  id: number = 0;
   initialSelection?: number;
-  revealedDoor?: number;
+  changedDoor?: boolean;
   finalDoor?: number;
   isWin?: boolean;
 }
