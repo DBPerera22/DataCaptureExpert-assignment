@@ -15,7 +15,7 @@ export class MontyHallComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.loadResult();
+    // this.loadResult();
   }
 
   resetForm(form?: NgForm) {
@@ -24,30 +24,17 @@ export class MontyHallComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
-    this.insertMontyHall();
-    this.resetForm(form);
-  }
-
-  loadResult() {
-    this.monty_hall.loadResult().subscribe(
-      (data: any) => {
-        this.resultList = data as MontyHall[];
-      },
-      (error) => {
-        console.log('Failed to load results:', error);
-      }
-    );
-  }
-
-  insertMontyHall() {
-    this.monty_hall.insertMontyHall().subscribe(
-      (res: any) => {
+    this.monty_hall.insertMontyHall(this.monty_hall.formData).subscribe({
+      next: (res: MontyHall) => {
         console.log('Record inserted successfully!');
-        this.loadResult();
+        this.resultList.push(res);
       },
-      (error) => {
+      error: (error) => {
         console.log('Failed to insert record:', error);
-      }
-    );
+      },
+      complete: () => {
+        this.resetForm(form);
+      },
+    });
   }
 }

@@ -9,7 +9,27 @@
           <form #form="ngForm" autocomplete="off" (submit)="OnSubmit(form)">
             <div class="form-group">
               <label for="initialSelection">Initial Selection</label>
-              <select name="initialSelection" id="initialSelection" class="form-control" [(ngModel)]="monty_hall.formData.initialSelection" required>
+              <select
+                name="initialSelection"
+                id="initialSelection"
+                class="form-control"
+                [(ngModel)]="monty_hall.formData.initialSelection"
+                required
+              >
+                <option value="1">Door 1</option>
+                <option value="2">Door 2</option>
+                <option value="3">Door 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="revealedSelection">Host Revealed Selection</label>
+              <select
+                name="revealedSelection"
+                id="revealedSelection"
+                class="form-control"
+                [(ngModel)]="monty_hall.formData.revealedSelection"
+                required
+              >
                 <option value="1">Door 1</option>
                 <option value="2">Door 2</option>
                 <option value="3">Door 3</option>
@@ -34,11 +54,10 @@
           <th>Win</th>
         </tr>
         <tr *ngFor="let result of resultList">
-            
           <td>{{ result.initialSelection }}</td>
           <td>{{ result.revealedDoor }}</td>
           <td>{{ result.finalDoor }}</td>
-          <td>{{ result.isWin }}</td>
+          <td>{{ result.isWin ? true : false }}</td>
         </tr>
       </table>
     </div>
