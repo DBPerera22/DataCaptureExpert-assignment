@@ -22,12 +22,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="revealedSelection">Host Revealed Selection</label>
+              <label for="revealedDoor">Host Revealed Selection</label>
               <select
-                name="revealedSelection"
-                id="revealedSelection"
+                name="revealedDoor"
+                id="revealedDoor"
                 class="form-control"
-                [(ngModel)]="monty_hall.formData.revealedSelection"
+                [(ngModel)]="monty_hall.formData.revealedDoor"
                 required
               >
                 <option value="1">Door 1</option>
@@ -45,21 +45,22 @@
     </div>
 
     <div class="col-mid-7">
-      <!-- Display results -->
-      <table class="table table-bordered mt-2" *ngIf="resultList">
-        <tr>
-          <th>Initial Selection</th>
-          <th>Revealed Door</th>
-          <th>Final Door</th>
-          <th>Win</th>
-        </tr>
-        <tr *ngFor="let result of resultList">
-          <td>{{ result.initialSelection }}</td>
-          <td>{{ result.revealedDoor }}</td>
-          <td>{{ result.finalDoor }}</td>
-          <td>{{ result.isWin ? true : false }}</td>
-        </tr>
-      </table>
-    </div>
+  <!-- Display results -->
+  <table class="table table-bordered mt-2" *ngIf="resultList">
+    <tr>
+      <th>Initial Selection</th>
+      <th>Revealed Door</th>
+      <th>Final Door</th>
+      <th>Win</th>
+    </tr>
+    <tr *ngFor="let result of resultList">
+      <td>{{ result.initialSelection }}</td>
+      <td>{{ result.revealedDoor }}</td>
+      <td>{{ result.finalDoor }}</td>
+      <td>{{ result.isWin ? true : false }}</td>
+    </tr>
+  </table>
+</div>
+
   </div>
 </div>
