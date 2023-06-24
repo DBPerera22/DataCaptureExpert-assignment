@@ -1,7 +1,9 @@
 export class MontyHall {
+  Rounds?: number;
   InitialDoorSelection?: number;
-  changedDoor?: boolean;
+  ChangeDoor?: boolean;
   finalDoor?: number;
   correctDoor?: number;
   isWin?: boolean;
+  message?: boolean;
 }
