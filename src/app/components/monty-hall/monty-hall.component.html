@@ -1,24 +1,32 @@
 <div class="container">
   <!-- Number of Rounds Section -->
-  <div class="row">
+  <div class="row mt-3" *ngIf="showRounds">
   <div class="col-md-5">
     <div class="card">
       <div class="card-body">
-        <div class="form-group">
-          <label for="numberOfRounds">Number of Rounds</label>
-          <input type="number" name="numberOfRounds" id="numberOfRounds" class="form-control"
-            [(ngModel)]="numberOfRounds" required min="1">
-          <div class="invalid-feedback" *ngIf="numberOfRounds <= 0">
-            Please enter a valid number of rounds (greater than zero).
+        <form #form="ngForm" autocomplete="off">
+          <div class="form-group">
+            <label for="numberOfRounds">Number of Rounds</label>
+            <input type="number" name="numberOfRounds" id="numberOfRounds" class="form-control"
+              [(ngModel)]="numberOfRounds" required min="1">
+            <div class="invalid-feedback" *ngIf="numberOfRounds <= 0">
+              Please enter a valid number of rounds (greater than zero).
+            </div>
           </div>
-        </div>
+          <div class="form-group mt-3">
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="onPlayClick()">
+              Play
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
 
-  <div class="row" *ngIf="showForm">
+
+  <div class="row mt-3" *ngIf="showForm">
     <!-- Form Section -->
     <div class="col-md-5">
       <div class="card">
@@ -70,7 +78,7 @@
   </div>
 
   <!-- Result Section -->
-  <div class="row">
+  <div class="row mt-3" *ngIf="showResults">
     <div class="col-md-7">
       <table class="table table-bordered table-striped mt-2" *ngIf="resultList.length > 0">
   <thead>
@@ -85,7 +93,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let result of resultList; let i = index">
-      <td>{{ i + 1 }}</td> <!-- Display the round number by adding 1 to the index -->
+      <td>{{ i + 1 }}</td>
       <td>{{ result.initialDoorSelection }}</td>
       <td>{{ result.revealedDoor }}</td>
       <td>{{ result.finalDoor }}</td>
@@ -100,4 +108,19 @@
 
     </div>
   </div>
-</div>
+
+  <!-- play again button -->
+  <!-- Number of Rounds Section -->
+  <div class="row" *ngIf="showPlayBack">
+  
+        <form #form="ngForm" autocomplete="off">
+          
+           <div class="form-group mt-3">
+              <button class="btn btn-primary" type="submit" [disabled]="form.invalid"  (click)="onPlayBackClick()">
+                Play Again
+              </button>
+            </div>
+        </form>
+   
+    </div>
+    </div>

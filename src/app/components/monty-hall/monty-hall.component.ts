@@ -13,7 +13,10 @@ export class MontyHallComponent implements OnInit {
   resultList: any[] = [];
   subscribe: Subscription = new Subscription();
   numberOfRounds: number = 1;
-  showForm: boolean = true;
+  showForm: boolean = false;
+  showRounds: boolean = true;
+  showResults: boolean = false;
+  showPlayBack: boolean = false;
   clickCount: number = 0;
 
   constructor(public monty_hall: MontyHallService) {}
@@ -55,4 +58,15 @@ export class MontyHallComponent implements OnInit {
     }
   }
 
+  onPlayClick() {
+    this.showRounds = false;
+    this.showForm = true;
+    this.showResults = true;
+    this.showPlayBack = true;
+
+  }
+  onPlayBackClick() {
+
+  location.reload();
+  }
 }
