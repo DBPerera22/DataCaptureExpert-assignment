@@ -1,17 +1,22 @@
 <div class="container">
   <!-- Number of Rounds Section -->
   <div class="row">
-    <div class="col-md-5">
-      <div class="card">
-        <div class="card-body">
-          <div class="form-group">
-            <label for="numberOfRounds">Number of Rounds</label>
-            <input type="number" name="numberOfRounds" id="numberOfRounds" class="form-control" [(ngModel)]="numberOfRounds" required>
+  <div class="col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="numberOfRounds">Number of Rounds</label>
+          <input type="number" name="numberOfRounds" id="numberOfRounds" class="form-control"
+            [(ngModel)]="numberOfRounds" required min="1">
+          <div class="invalid-feedback" *ngIf="numberOfRounds <= 0">
+            Please enter a valid number of rounds (greater than zero).
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 
   <div class="row" *ngIf="showForm">
     <!-- Form Section -->
@@ -24,7 +29,7 @@
 
         <!-- Card Body -->
         <div class="card-body">
-          <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form) ">
             <div class="form-group">
               <label for="InitialDoorSelection">Initial Selection</label>
               <select
@@ -48,13 +53,13 @@
                 [(ngModel)]="monty_hall.formData.ChangeDoor"
                 required
               >
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value= "1">Yes</option>
+                <option value= "0">No</option>
               </select>
             </div>
 
             <div class="form-group mt-3">
-              <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="onClick()">
+              <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
                 Check
               </button>
             </div>
@@ -67,26 +72,32 @@
   <!-- Result Section -->
   <div class="row">
     <div class="col-md-7">
-      <table class="table table-bordered mt-2" *ngIf="resultList.length > 0">
-        <thead>
-          <tr>
-            <th>Initial Selection</th>
-            <th>Revealed Door</th>
-            <th>Final Door</th>
-            <th>Prize Door</th>
-            <th>Win</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let result of resultList">
-            <td>{{ result.initialDoorSelection }}</td>
-            <td>{{ result.revealedDoor }}</td>
-            <td>{{ result.finalDoor }}</td>
-            <td>{{ result.correctDoor }}</td>
-            <td>{{ result.isWin }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <table class="table table-bordered table-striped mt-2" *ngIf="resultList.length > 0">
+  <thead>
+    <tr>
+      <th>Rounds</th>
+      <th>Initial Selection</th>
+      <th>Revealed Door</th>
+      <th>Final Door</th>
+      <th>Prize Door</th>
+      <th>Win</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of resultList; let i = index">
+      <td>{{ i + 1 }}</td> <!-- Display the round number by adding 1 to the index -->
+      <td>{{ result.initialDoorSelection }}</td>
+      <td>{{ result.revealedDoor }}</td>
+      <td>{{ result.finalDoor }}</td>
+      <td>{{ result.correctDoor }}</td>
+      <td>{{ result.isWin }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      <p class="text-start" *ngIf="resultList.length == 0">Good Luck on your first attempt!!</p>
+
     </div>
   </div>
 </div>

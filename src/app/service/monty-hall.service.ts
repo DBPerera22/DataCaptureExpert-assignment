@@ -13,7 +13,7 @@ export class MontyHallService {
 
   constructor(private http: HttpClient) {}
 
-  insertMontyHall(data: MontyHall): Observable<any> {
+  insertMontyHall(data: any): Observable<any> {
     console.log(data);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.rootURL, data, { headers });
